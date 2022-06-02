@@ -3,12 +3,12 @@ import '../assets/Styles/GamePlay.css';
 import { useState, useEffect } from 'react';
 
 const cardImages = [
-    { "src": "./photos/helmet.png", matched: false },
-    { "src": "./photos/potion.png", matched: false },
-    { "src": "./photos/ring.png", matched: false },
-    { "src": "./photos/shield.png", matched: false },
-    { "src": "./photos/sword.png", matched: false },
-    { "src": "./photos/scroll.png", matched: false },
+    { "src": "/photos/helmet.png", matched: false },
+    { "src": "/photos/potion.png", matched: false },
+    { "src": "/photos/ring.png", matched: false },
+    { "src": "/photos/shield.png", matched: false },
+    { "src": "/photos/sword.png", matched: false },
+    { "src": "/photos/scroll.png", matched: false },
 ]
 
 function GamePlay() {

@@ -8,10 +8,10 @@ function SingleCard({ card, handleChoice, flipped,disable }) {
     return (
         <div className='card'>
             <div className={flipped ? 'flipped' : ''}>
-                <img src={card.src} alt='front-card' className='front-card' />
+                <img src={process.env.PUBLIC_URL+card.src} alt='front-card' className='front-card' />
                 <img
                     className='back-card'
-                    src='./photos/cover.png'
+                    src={process.env.PUBLIC_URL+'/photos/cover.png'}
                     alt='back-card'
                     onClick={handleClick}
                 />
