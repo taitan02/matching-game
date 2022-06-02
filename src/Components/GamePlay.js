@@ -1,6 +1,6 @@
 import SingleCard from "./SingleCard";
 import '../assets/Styles/GamePlay.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useLayoutEffect} from 'react';
 
 const cardImages = [
     { "src": "/photos/helmet.png", matched: false },
@@ -13,11 +13,12 @@ const cardImages = [
 
 function GamePlay() {
     const [cards, setCards] = useState([])
-    const [turns,setTurns]=useState(0)
+    const [turns, setTurns] = useState(0)
     const [choiceOne, setChoiceOne] = useState(null)
     const [choiceTwo, setChoiceTwo] = useState(null)
     const [disable, setDisable] = useState(false)
-    const [display,setDisplay]=useState(false)
+    const [display, setDisplay] = useState(false)
+    const [end, setEnd] = useState(false)
 
     const shuffleCards = () => {
         const doubleCard = [...cardImages, ...cardImages]
@@ -32,11 +33,14 @@ function GamePlay() {
         setChoiceTwo(null)
         setDisplay(true)
         setTurns(0)
+        setEnd(false)
     }
     const handleChoice = (card) => {
         !choiceOne ? setChoiceOne(card) : setChoiceTwo(card)
 
     }
+
+    //Xử lý khi chọn thẻ
     useEffect(() => {
         if (choiceTwo) {
             setDisable(true)
@@ -56,15 +60,21 @@ function GamePlay() {
             setTimeout(() => {
                 setChoiceOne(null)
                 setChoiceTwo(null)
-                
-            }, 1000)
-            setTimeout(()=>{
                 setDisable(false)
-            },1200)
-            setTurns(turns+1)
+            }, 1000)
+            setTurns(turns + 1)
         }
     }, [choiceTwo])
-    console.log(cards)
+
+// Xét điều kiện game kết thúc
+    useEffect(() => {
+        
+        if (choiceTwo && !cards.some(card=>card.matched===false)) {
+            setEnd(true)
+        }
+
+    }, [cards])
+    console.log(end)
     return (
         <div className='gamePlay'>
             <div className='game-name'>Matching Game</div>
@@ -81,6 +91,7 @@ function GamePlay() {
                 ))}
             </div>
             {display && <div className='turn'>Your turns is: {turns} turns</div>}
+            {end && <div className='win'>YOU WIN </div>}
         </div>
     )
 }

@@ -28,3 +28,10 @@ button:hover{
 .turn{
     padding-top: 16px;
 }
+.win{
+    color:red;
+    font-size:2em;
+    font-weight:600;
+    background:linear-gradient(rgba(13, 1, 56, 0.87),rgba(8, 3, 85, 0.849));
+    
+}

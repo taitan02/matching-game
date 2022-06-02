@@ -7,7 +7,6 @@ img{
 }
 .card{
   position: relative;
-  /* display: inline-block; */
 }
 .card .front-card{
   position: absolute;
