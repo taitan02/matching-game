@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Raleway:ital,wght@0,100;0,200;1,100;1,200&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: Raleway, sans-serif;
+    margin: 0;
+    font-size: 1.5em;
+    text-align: center;
+    background: linear-gradient(to right,rgba(13, 1, 56, 0.87),rgba(8, 3, 85, 0.849),rgb(12, 10, 184)) no-repeat;
+    color: #fff;
+    background-attachment:fixed;
+    /* min-height: 660px; */
+}
+.App{
+    display: inline-block;
+}
