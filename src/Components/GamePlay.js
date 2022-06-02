@@ -1,6 +1,9 @@
 import SingleCard from "./SingleCard";
 import '../assets/Styles/GamePlay.css';
-import { useState, useEffect,useLayoutEffect} from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
+import click from '../assets/sound/choice.mp3'
+import matched from '../assets/sound/matched.mp3'
+import win from '../assets/sound/win.mp3'
 
 const cardImages = [
     { "src": "/photos/helmet.png", matched: false },
@@ -20,6 +23,10 @@ function GamePlay() {
     const [display, setDisplay] = useState(false)
     const [end, setEnd] = useState(false)
 
+    const audioClick = new Audio(click)
+    const audioMatched = new Audio(matched)
+    const audioWin = new Audio(win)
+
     const shuffleCards = () => {
         const doubleCard = [...cardImages, ...cardImages]
         const shuffled = doubleCard
@@ -38,6 +45,8 @@ function GamePlay() {
     const handleChoice = (card) => {
         !choiceOne ? setChoiceOne(card) : setChoiceTwo(card)
 
+        audioClick.play()
+
     }
 
     //Xử lý khi chọn thẻ
@@ -48,6 +57,8 @@ function GamePlay() {
                 setCards(cards => {
                     return cards.map(card => {
                         if (card.src === choiceOne.src) {
+                            
+                            audioMatched.play()
                             return {
                                 ...card,
                                 matched: true
@@ -66,11 +77,12 @@ function GamePlay() {
         }
     }, [choiceTwo])
 
-// Xét điều kiện game kết thúc
+    // Xét điều kiện game kết thúc
     useEffect(() => {
-        
-        if (choiceTwo && !cards.some(card=>card.matched===false)) {
+
+        if (choiceTwo && !cards.some(card => card.matched === false)) {
             setEnd(true)
+            audioWin.play()
         }
 
     }, [cards])
