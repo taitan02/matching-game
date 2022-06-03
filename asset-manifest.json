@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/matching-game/static/css/main.68cf3cea.css",
-    "main.js": "/matching-game/static/js/main.f2b07930.js",
+    "main.css": "/matching-game/static/css/main.be22f70e.css",
+    "main.js": "/matching-game/static/js/main.3ced3bb3.js",
     "static/js/787.f0488d0e.chunk.js": "/matching-game/static/js/787.f0488d0e.chunk.js",
     "static/media/cat-matched.mp3": "/matching-game/static/media/cat-matched.b45440745818fb3fc478.mp3",
     "static/media/win.mp3": "/matching-game/static/media/win.9624b54cfa16e30cef42.mp3",
     "static/media/choice.mp3": "/matching-game/static/media/choice.994d8afe826567d66a72.mp3",
     "index.html": "/matching-game/index.html",
-    "main.68cf3cea.css.map": "/matching-game/static/css/main.68cf3cea.css.map",
-    "main.f2b07930.js.map": "/matching-game/static/js/main.f2b07930.js.map",
+    "main.be22f70e.css.map": "/matching-game/static/css/main.be22f70e.css.map",
+    "main.3ced3bb3.js.map": "/matching-game/static/js/main.3ced3bb3.js.map",
     "787.f0488d0e.chunk.js.map": "/matching-game/static/js/787.f0488d0e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.68cf3cea.css",
-    "static/js/main.f2b07930.js"
+    "static/css/main.be22f70e.css",
+    "static/js/main.3ced3bb3.js"
   ]
 }
