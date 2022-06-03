@@ -23,10 +23,6 @@ function GamePlay() {
     const [display, setDisplay] = useState(false)
     const [end, setEnd] = useState(false)
 
-
-
-
-
     const shuffleCards = () => {
         const doubleCard = [...cardImages, ...cardImages]
         const shuffled = doubleCard
@@ -47,13 +43,10 @@ function GamePlay() {
         !choiceOne ? setChoiceOne(card) : setChoiceTwo(card)
         const audioClick = new Audio(click)
         audioClick.play()
-
     }
-
     //handle comparing between two card
     useEffect(() => {
         if (choiceTwo) {
-
             if (choiceOne.src === choiceTwo.src) {
                 setCards(cards => {
                     return cards.map(card => {
@@ -68,10 +61,8 @@ function GamePlay() {
                     })
                 }
                 )
-                setTimeout(() => { // delay setChoiceTwo to consider endgame condition
-                    setChoiceOne(null)
-                    setChoiceTwo(null)
-                }, 100)
+                setChoiceOne(null)
+                setChoiceTwo(null)
             } else {
                 setDisable(true)
                 setTimeout(() => {    //delay to see front-card
@@ -80,7 +71,6 @@ function GamePlay() {
                     setDisable(false)
                 }, 800)
             }
-
             setTurns(turns + 1)
         }
     }, [choiceTwo])
@@ -88,12 +78,13 @@ function GamePlay() {
     // end game condition
     useEffect(() => {
 
-        if (choiceTwo && !cards.some(card => card.matched === false)) {
-            setEnd(true)
-            const audioWin = new Audio(win)
-            audioWin.play()
+        if (cards.length !== 0 && !cards.some(card => card.matched === false)) {
+            setTimeout(() => {
+                setEnd(true)
+                const audioWin = new Audio(win)
+                audioWin.play()
+            }, 1000)
         }
-
     }, [cards])
     console.log(end)
     return (

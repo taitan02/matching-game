@@ -15,7 +15,7 @@ button{
     transition: all linear 0.5s;
 }
 button:hover{
-    background-color: rgb(42, 13, 207);
+    background-color: rgba(231, 15, 15, 0.856);
 
 }
 .grid-container{
