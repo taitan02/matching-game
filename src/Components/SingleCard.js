@@ -11,7 +11,7 @@ function SingleCard({ card, handleChoice, flipped,disable }) {
                 <img src={process.env.PUBLIC_URL+card.src} alt='front-card' className='front-card' />
                 <img
                     className='back-card'
-                    src={process.env.PUBLIC_URL+'/photos/cover.png'}
+                    src={process.env.PUBLIC_URL+'/photos/cat-face.png'}
                     alt='back-card'
                     onClick={handleClick}
                 />

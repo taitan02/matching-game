@@ -1,17 +1,17 @@
 import SingleCard from "./SingleCard";
 import '../assets/Styles/GamePlay.css';
-import { useState, useEffect, useLayoutEffect } from 'react';
+import { useState, useEffect } from 'react';
 import click from '../assets/sound/choice.mp3'
-import matched from '../assets/sound/matched.mp3'
+import matched from '../assets/sound/cat-matched.mp3'
 import win from '../assets/sound/win.mp3'
 
 const cardImages = [
-    { "src": "/photos/helmet.png", matched: false },
-    { "src": "/photos/potion.png", matched: false },
-    { "src": "/photos/ring.png", matched: false },
-    { "src": "/photos/shield.png", matched: false },
-    { "src": "/photos/sword.png", matched: false },
-    { "src": "/photos/scroll.png", matched: false },
+    { "src": "/photos/buger-cat.png", matched: false },
+    { "src": "/photos/milktea-cat.png", matched: false },
+    { "src": "/photos/sushi-cat.png", matched: false },
+    { "src": "/photos/cat-fish.png", matched: false },
+    { "src": "/photos/cream.png", matched: false },
+    { "src": "/photos/cat-break.png", matched: false },
 ]
 
 function GamePlay() {
@@ -23,9 +23,9 @@ function GamePlay() {
     const [display, setDisplay] = useState(false)
     const [end, setEnd] = useState(false)
 
-    const audioClick = new Audio(click)
-    const audioMatched = new Audio(matched)
-    const audioWin = new Audio(win)
+
+
+
 
     const shuffleCards = () => {
         const doubleCard = [...cardImages, ...cardImages]
@@ -42,22 +42,23 @@ function GamePlay() {
         setTurns(0)
         setEnd(false)
     }
+    //handle when choice any card
     const handleChoice = (card) => {
         !choiceOne ? setChoiceOne(card) : setChoiceTwo(card)
-
+        const audioClick = new Audio(click)
         audioClick.play()
 
     }
 
-    //Xử lý khi chọn thẻ
+    //handle comparing between two card
     useEffect(() => {
         if (choiceTwo) {
-            setDisable(true)
+
             if (choiceOne.src === choiceTwo.src) {
                 setCards(cards => {
                     return cards.map(card => {
                         if (card.src === choiceOne.src) {
-                            
+                            const audioMatched = new Audio(matched)
                             audioMatched.play()
                             return {
                                 ...card,
@@ -67,21 +68,29 @@ function GamePlay() {
                     })
                 }
                 )
-            }       //Chỗ nãy là else
-            setTimeout(() => {
-                setChoiceOne(null)
-                setChoiceTwo(null)
-                setDisable(false)
-            }, 1000)
+                setTimeout(() => { // delay setChoiceTwo to consider endgame condition
+                    setChoiceOne(null)
+                    setChoiceTwo(null)
+                }, 100)
+            } else {
+                setDisable(true)
+                setTimeout(() => {    //delay to see front-card
+                    setChoiceOne(null)
+                    setChoiceTwo(null)
+                    setDisable(false)
+                }, 800)
+            }
+
             setTurns(turns + 1)
         }
     }, [choiceTwo])
 
-    // Xét điều kiện game kết thúc
+    // end game condition
     useEffect(() => {
 
         if (choiceTwo && !cards.some(card => card.matched === false)) {
             setEnd(true)
+            const audioWin = new Audio(win)
             audioWin.play()
         }
 

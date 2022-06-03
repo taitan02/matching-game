@@ -23,7 +23,10 @@ button:hover{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap:6px;
-    padding: 0 6px
+    padding: 0 6px;
+    /* box-shadow: -10px -5px 100px -5px rgba(231, 52, 52, 0.664);
+    background:none; */
+    
 }
 .turn{
     padding-top: 16px;
